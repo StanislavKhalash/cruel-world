@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CruelWorld", "CruelWorld\CruelWorld.csproj", "{A6DDE0ED-91E4-4036-8639-3AFDA72C7227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CruelWorld.Tests", "CruelWorld.Tests\CruelWorld.Tests.csproj", "{7B12B5A2-8C4F-4D67-9AA7-C95544459B01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6DDE0ED-91E4-4036-8639-3AFDA72C7227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6DDE0ED-91E4-4036-8639-3AFDA72C7227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6DDE0ED-91E4-4036-8639-3AFDA72C7227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6DDE0ED-91E4-4036-8639-3AFDA72C7227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B12B5A2-8C4F-4D67-9AA7-C95544459B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B12B5A2-8C4F-4D67-9AA7-C95544459B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B12B5A2-8C4F-4D67-9AA7-C95544459B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B12B5A2-8C4F-4D67-9AA7-C95544459B01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
