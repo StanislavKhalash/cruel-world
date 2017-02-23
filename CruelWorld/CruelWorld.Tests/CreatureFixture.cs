@@ -40,6 +40,65 @@ namespace CruelWorld.Tests
             Assert.AreEqual(basicDamage, creature.Damage);
         }
 
+        [Test]
+        public void Constructor_IsAlive()
+        {
+            var creature = Create("Creature", 100, 0);
+            Assert.IsTrue(creature.IsAlive);
+        }
+
+        [Test]
+        public void Attack_DamageIsLessThanCurrentHealth_StaysAlive()
+        {
+            uint attackerDamage = 50;
+            uint defenderMaxHealth = 100;
+
+            var attacker = Create("Attacker", 100, attackerDamage);
+            var defender = Create("Defender", defenderMaxHealth, 0);
+            attacker.Attack(defender);
+
+            Assert.IsTrue(defender.IsAlive);
+        }
+
+        [Test]
+        public void Attack_DamageIsLessThanCurrentHealth_DecreasesHealth()
+        {
+            uint attackerDamage = 50;
+            uint defenderMaxHealth = 100;
+
+            var attacker = Create("Attacker", 100, attackerDamage);
+            var defender = Create("Defender", defenderMaxHealth, 0);
+            attacker.Attack(defender);
+
+            Assert.AreEqual(50, defender.CurrentHealth);
+        }
+
+        [Test]
+        public void Attack_DamageIsGreaterThanCurrentHealth_Kills()
+        {
+            uint attackerDamage = 150;
+            uint defenderMaxHealth = 100;
+
+            var attacker = Create("Attacker", 100, attackerDamage);
+            var defender = Create("Defender", defenderMaxHealth, 0);
+            attacker.Attack(defender);
+
+            Assert.IsFalse(defender.IsAlive);
+        }
+
+        [Test]
+        public void Attack_DamageIsLessThanCurrentHealth_HealthDropsToZero()
+        {
+            uint attackerDamage = 150;
+            uint defenderMaxHealth = 100;
+
+            var attacker = Create("Attacker", 100, attackerDamage);
+            var defender = Create("Defender", defenderMaxHealth, 0);
+            attacker.Attack(defender);
+
+            Assert.AreEqual(0, defender.CurrentHealth);
+        }
+
         protected abstract TCreature Create(string name, uint maxHealth, uint basicDamage);
     }
 }

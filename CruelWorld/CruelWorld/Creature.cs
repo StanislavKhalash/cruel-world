@@ -16,6 +16,8 @@ namespace CruelWorld
 
         public uint CurrentHealth { get; private set; }
 
+        public bool IsAlive => CurrentHealth > 0;
+
         public virtual uint Damage => BasicDamage;
 
         public Creature(string name, uint maxHealth, uint basicDamage)
@@ -33,6 +35,18 @@ namespace CruelWorld
             Name = name;
             CurrentHealth = MaxHealth = maxHealth;
             BasicDamage = basicDamage;
+        }
+
+        public void Attack(Creature other)
+        {
+            if (Damage > other.CurrentHealth)
+            {
+                other.CurrentHealth = 0;
+            }
+            else
+            {
+                other.CurrentHealth -= Damage;
+            }
         }
     }
 }

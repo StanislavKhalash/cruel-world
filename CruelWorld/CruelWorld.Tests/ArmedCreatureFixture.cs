@@ -34,7 +34,7 @@ namespace CruelWorld.Tests
             var creature = Create("Armed Creature", 50, basicDamage);
             creature.Weapon = sword;
 
-            Assert.AreEqual(basicDamage + swordDamage, creature.Damage);
+            Assert.AreEqual(150, creature.Damage);
         }
     }
 }
