@@ -25,6 +25,10 @@ namespace CruelWorld
 
         public virtual uint Damage => BasicDamage;
 
+        public bool IsLarge { get; set; }
+
+        public Party Allies { get; set; }
+
         public void Attack(Creature other)
         {
             if (Damage > other.CurrentHealth)

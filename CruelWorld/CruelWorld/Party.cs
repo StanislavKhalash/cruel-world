@@ -19,6 +19,21 @@ namespace CruelWorld
             {
                 throw new ArgumentException(nameof(creatures));
             }
+
+            foreach (var creature in Creatures)
+            {
+                if (creature == null)
+                {
+                    throw new ArgumentNullException(nameof(creature));
+                }
+
+                if (creature.Allies != null)
+                {
+                    throw new InvalidOperationException("A creature can be a member of only one party at a time");
+                }
+
+                creature.Allies = this;
+            }
         }
 
         public List<Creature> Creatures { get; }

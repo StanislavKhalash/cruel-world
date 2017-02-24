@@ -15,12 +15,44 @@ namespace CruelWorld.Tests.Unit
         }
 
         [Test]
+        public void Constructor_CreatureIsInAnotherParty_ThrowsException()
+        {
+            var goblin = new Goblin(100, 20);
+
+            var party = new Party(new List<Creature> { goblin });
+
+            Assert.Throws<InvalidOperationException>(() => new Party(new List<Creature> { goblin }));
+        }
+
+        [Test]
+        public void Constructor_SetsAlliedParty()
+        {
+            var goblins = Enumerable.Range(0, 100).Select(_ => new Goblin(70, 15)).ToList();
+            var party = new Party(goblins);
+
+            var allGoblinsAreInAlliedParty = party.Creatures.All(creature => creature.Allies == party);
+            Assert.IsTrue(allGoblinsAreInAlliedParty);
+        }
+
+        [Test]
+        public void Constructor_ListIsEmpty_ThrowsException()
+        {
+            Assert.Throws<ArgumentException>(() => new Party(new List<Creature>()));
+        }
+
+        [Test]
+        public void Constructor_ListHasNulls_ThrowsException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new Party(new List<Creature> {null}));
+        }
+
+        [Test]
         public void FightWith_DefeatedPartyIsAllDead()
         {
             var legendaryGoblin = new Goblin(uint.MaxValue, uint.MaxValue);
             var weakGoblinHorde = Enumerable.Range(0, 100).Select(_ => new Goblin(70, 15)).ToList();
 
-            var attackingParty = new Party(new List<Creature> {legendaryGoblin});
+            var attackingParty = legendaryGoblin.AsParty();
             var defendingParty = new Party(weakGoblinHorde);
 
             attackingParty.FightWith(defendingParty);
@@ -35,18 +67,12 @@ namespace CruelWorld.Tests.Unit
             var weakGoblin1 = new Goblin(70, 15);
             var weakGoblin2 = new Goblin(70, 15);
 
-            var attackingParty = new Party(new List<Creature> {strongGoblin});
+            var attackingParty = strongGoblin.AsParty();
             var defendingParty = new Party(new List<Creature> {weakGoblin1, weakGoblin2});
 
             var result = attackingParty.FightWith(defendingParty);
 
             Assert.IsFalse(result.DefenderDefeated);
-        }
-
-        [Test]
-        public void FightWith_PartyIsEmpty_ThrowsException()
-        {
-            Assert.Throws<ArgumentException>(() => new Party(new List<Creature>()));
         }
 
         [Test]
@@ -62,10 +88,7 @@ namespace CruelWorld.Tests.Unit
             var goblinAttacker = new Goblin(100, 20);
             var goblinDefender = new Goblin(100, 25);
 
-            var attackingParty = new Party(new List<Creature> {goblinAttacker});
-            var defendingParty = new Party(new List<Creature> {goblinDefender});
-
-            var result = attackingParty.FightWith(defendingParty);
+            var result = goblinAttacker.AsParty().FightWith(goblinDefender.AsParty());
 
             Assert.IsFalse(result.DefenderDefeated);
         }
@@ -76,10 +99,7 @@ namespace CruelWorld.Tests.Unit
             var goblinAttacker = new Goblin(100, 20);
             var goblinDefender = new Goblin(110, 20);
 
-            var attackingParty = new Party(new List<Creature> {goblinAttacker});
-            var defendingParty = new Party(new List<Creature> {goblinDefender});
-
-            var result = attackingParty.FightWith(defendingParty);
+            var result = goblinAttacker.AsParty().FightWith(goblinDefender.AsParty());
 
             Assert.IsFalse(result.DefenderDefeated);
         }
@@ -90,10 +110,7 @@ namespace CruelWorld.Tests.Unit
             var goblinAttacker = new Goblin(100, 20);
             var goblinDefender = new Goblin(100, 20);
 
-            var attackingParty = new Party(new List<Creature> {goblinAttacker});
-            var defendingParty = new Party(new List<Creature> {goblinDefender});
-
-            var result = attackingParty.FightWith(defendingParty);
+            var result = goblinAttacker.AsParty().FightWith(goblinDefender.AsParty());
 
             Assert.IsTrue(result.DefenderDefeated);
         }

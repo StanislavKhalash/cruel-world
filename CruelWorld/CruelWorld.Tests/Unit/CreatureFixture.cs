@@ -35,7 +35,7 @@ namespace CruelWorld.Tests.Unit
         }
 
         [Test]
-        public void Attack_DamageIsLessThanCurrentHealth_StaysAlive()
+        public void Attack_DamageIsLessThanCurrentHealth_DoesntKill()
         {
             uint attackerDamage = 50;
             uint defenderMaxHealth = 100;

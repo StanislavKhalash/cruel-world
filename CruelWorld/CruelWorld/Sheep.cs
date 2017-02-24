@@ -1,8 +1,8 @@
 ﻿namespace CruelWorld
 {
-    public class Ship : Creature
+    public class Sheep : Creature
     {
-        public Ship(uint maxHealth, uint basicDamage)
+        public Sheep(uint maxHealth, uint basicDamage)
             : base(maxHealth, basicDamage)
         {
         }
