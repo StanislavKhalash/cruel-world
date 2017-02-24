@@ -54,6 +54,7 @@
     <Compile Include="CreatureFixture.cs" />
     <Compile Include="GoblinFixture.cs" />
     <Compile Include="OgreFixture.cs" />
+    <Compile Include="PartyFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipFixture.cs" />
     <Compile Include="WeaponFixture.cs" />

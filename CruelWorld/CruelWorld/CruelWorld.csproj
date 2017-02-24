@@ -48,8 +48,10 @@
   <ItemGroup>
     <Compile Include="ArmedCreature.cs" />
     <Compile Include="Creature.cs" />
+    <Compile Include="FightResult.cs" />
     <Compile Include="Goblin.cs" />
     <Compile Include="Ogre.cs" />
+    <Compile Include="Party.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Weapon.cs" />
