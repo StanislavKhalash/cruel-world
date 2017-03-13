@@ -1,4 +1,6 @@
 # cruel-world
+[![Build status][img-appveyor-build]][appveyor]
+[![Test status][img-appveyor-test]][appveyor]
 
 Please, design domain model classes and implement following game mechanics.
 There are three races: ogres, goblins and sheeps. Ogres can eat goblins and sheeps. Goblins can eat each other and sheeps. All races can attack each other. Ogres and goblins can use weapons.
@@ -11,3 +13,8 @@ Implement situations based on the model described:
 - A group of ogres have successfully eaten a group of goblins.
 - Two orges try to eat a goblin with a magic sword and fail.
 - A herd of sheeps together with a group of goblins fight with two ogres and win.
+
+[appveyor]: https://ci.appveyor.com/project/StanislavKhalash/cruel-world/branch/master
+
+[img-appveyor-build]: https://ci.appveyor.com/api/projects/status/5s6bin9dd2yos2jl?svg=true
+[img-appveyor-test]: http://teststatusbadge.azurewebsites.net/api/status/StanislavKhalash/cruel-world
